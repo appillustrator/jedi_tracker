@@ -1,0 +1,3 @@
+[submodule "Photon_OLED_Shield"]
+	path = Photon_OLED_Shield
+	url = git@github.com:monkbroc/Photon_OLED_Shield.git
