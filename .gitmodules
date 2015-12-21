@@ -1,3 +1,6 @@
 [submodule "Photon_OLED_Shield"]
 	path = Photon_OLED_Shield
 	url = git@github.com:monkbroc/Photon_OLED_Shield.git
+[submodule "tiny_gps_plus"]
+	path = tiny_gps_plus
+	url = git@github.com:codegardenllc/tiny_gps_plus.git
