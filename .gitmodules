@@ -4,3 +4,9 @@
 [submodule "tiny_gps_plus"]
 	path = tiny_gps_plus
 	url = git@github.com:codegardenllc/tiny_gps_plus.git
+[submodule "HttpClient"]
+	path = HttpClient
+	url = git@github.com:nmattisson/HttpClient.git
+[submodule "jsmn"]
+	path = jsmn
+	url = git@github.com:zserge/jsmn.git
