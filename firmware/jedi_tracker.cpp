@@ -4,6 +4,7 @@
 #include "GeocacheFetcher.h"
 
 SYSTEM_MODE(SEMI_AUTOMATIC);
+SYSTEM_THREAD(ENABLED);
 
 typedef void (*LoopHandler_t)(void);
 LoopHandler_t loopHandler = NULL;
@@ -80,6 +81,7 @@ void initializeDisplay() {
   screen.begin();     // Initialize the OLED
   screen.clear(ALL);  // Clear the library's display buffer
   screen.display();   // Display what's in the buffer (splashscreen)
+  delay(1000);
 }
 
 void connectToNetwork() {
@@ -182,14 +184,18 @@ void trackTarget() {
       target.longitude);
     cardinalToTarget = TinyGPSPlus::cardinal(courseToTarget);
 
-    Serial.println(
-      String(gps.location.lat()) + "," +
-      String(gps.location.lng()) + " -> " +
-      String(target.latitude) + "," +
-      String(target.longitude) + "=" +
-      String(distanceToTarget) + " (" +
-      String(cardinalToTarget) + ")"
-    );
+    static int lastUpdate = 0;
+    if(millis() - lastUpdate > 1000) {
+      lastUpdate = millis();
+      Serial.println(
+        String(gps.location.lat()) + "," +
+        String(gps.location.lng()) + " -> " +
+        String(target.latitude) + "," +
+        String(target.longitude) + "=" +
+        String(distanceToTarget) + " (" +
+        String(cardinalToTarget) + ")"
+      );
+    }
 
     updateScreen();
   }
